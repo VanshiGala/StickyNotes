@@ -10,6 +10,7 @@ import Login from "./components/Login";
 import { useAuth } from "./AuthProvider";
 import Welcome from "./components/Welcome";
 import { Navigate } from "react-router-dom";
+import Work from './components/Work';
 
 function App() {
   const [isNav, setIsNav] = useState(false);
@@ -44,6 +45,7 @@ function App() {
           <Route path="/today" element={<Today events={events} />} />
           <Route path="/upcoming" element={<Upcoming />} />
           <Route path="/calendar" element={<CalendarNav />} />
+          <Route path="/Work" element={<Work />} />
         </Routes>
       </div>
     </div>
