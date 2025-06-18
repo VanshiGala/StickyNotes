@@ -9,8 +9,8 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import { useAuth } from "./AuthProvider";
 import Welcome from "./components/Welcome";
-import { Navigate } from "react-router-dom";
-import Work from './components/Work';
+
+import Work from "./components/Work";
 
 function App() {
   const [isNav, setIsNav] = useState(false);
@@ -22,7 +22,7 @@ function App() {
   });
 
   return (
-    <div className="min-h-screen bg-pink-100 w-full h-full  text-white">
+    <div className=" relative min-h-screen bg-pink-100 w-full h-full  text-white overflow-x-hidden">
       {user && (
         <>
           <button
