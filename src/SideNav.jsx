@@ -15,8 +15,9 @@ function SideNav({ isSlided, isNotSlided }) {
     <SideNavPortal>
       <div className=" inset-0 z-10 flex">
         <div className="flex-1 " onClick={isNotSlided}></div>
-        <div className="fixed top-0 left-0 h-full w-40 bg-pink-300 shadow-lg z-50 transition-transform duration-300">
+        <div className=" fixed top-0 left-0 h-full w-40 bg-pink-300 shadow-lg z-50 transition-transform duration-300">
           <div className="p-4">
+           
             <h3 className="font-bold mt-8">Tasks</h3>
             <ul className="space-y-2 text-black">
               <li>
