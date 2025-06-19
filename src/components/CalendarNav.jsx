@@ -2,7 +2,7 @@ import React, { useState, useEffect, use } from "react";
 import { NavLink } from "react-router-dom";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { Input, Container, Row, Col } from "reactstrap";
+import { Input } from "reactstrap";
 
 function CalendarNav() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -52,38 +52,34 @@ function CalendarNav() {
   }, []);
 
   return (
-    <Container fluid className="  flex justify-center">
-      <Row className="justify-center">
-        <Col xs="12" className="text-center mb-4 p-3">
-          <NavLink
-            to="/calendar"
-            className="text-blue-600 text-xl font-semibold hover:text-blue-800 "
-          >
-            Calendar
-          </NavLink>
-        </Col>
+    <div className="w-full flex flex-col items-center px-4">
+      <div className="w-full text-center mb-6 pt-4">
+        <NavLink
+          to="/calendar"
+          className="text-blue-600 text-xl font-semibold hover:text-blue-800 "
+        >
+          Calendar
+        </NavLink>
+      </div>
 
-        <Col xs="12" md="6" lg="4">
-          <div className="flex justify-center w-full">
-            <Calendar
-              onChange={setCurrentDate}
-              onClickDay={handleClick}
-              value={currentDate || ""}
-              className="w-full max-w-sm text-black no-underline"
-              tileClassName={({ date }) => {
-                if (date.getDay() === 0) {
-                  return "text-red-600 font-semibold";
-                }
-                return "text-gray-800";
-              }}
-            />
-          </div>
-        </Col>
-      </Row>
+      <div className="transform scale-70 ml-50 origin-top-left">
+        <Calendar
+          onChange={setCurrentDate}
+          onClickDay={handleClick}
+          value={currentDate || ""}
+          className="w-full max-w-xs  text-black text-xl no-underline"
+          tileClassName={({ date }) => {
+            if (date.getDay() === 0) {
+              return "text-red-600 font-semibold";
+            }
+            return "text-gray-800";
+          }}
+        />
+      </div>
 
       {modal && (
-        <div className="fixed inset-0 text-black bg-opacity-40 z-50 flex justify-center items-start pt-100">
-          <div className="bg-white rounded-lg shadow-lg w-90 p-4">
+        <div className="fixed inset-0 text-black bg-opacity-40 z-50 flex justify-center items-start pt-85">
+          <div className="bg-white rounded-lg shadow-lg w-90 p-4 ml-30">
             <h2 className="text-lg font-bold mb-4">
               Add event on {currentDate.toDateString()}
             </h2>
@@ -111,7 +107,7 @@ function CalendarNav() {
           </div>
         </div>
       )}
-    </Container>
+    </div>
   );
 }
 

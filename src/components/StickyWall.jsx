@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import StickyNote from "./StickyNote";
-import { Card, CardBody, Container, Row, Col } from "reactstrap";
+import { Card, CardBody } from "reactstrap";
 
 const StickyWall = () => {
   const [notes, setNotes] = useState(() => {
@@ -49,21 +49,21 @@ const StickyWall = () => {
 
   return (
     <div className="p-6">
-      <Container className="w-full h-full">
+      <div className="p-6 w-full h-full">
         <h1 className="text-3xl font-bold mb-6 text-black flex justify-center">
           Sticky Wall
         </h1>
 
-        <Row className="justify-center mb-4">
-          <Col xs="12" md="8" lg="6">
-            <Card className="mx-auto mb-4 border border-black p-4 rounded max-w-[400px]">
+        <div className="flex justify-center mb-6">
+          <div className="w-full max-w-md  p-2 rounded">
+            <Card className="mx-auto mb-4 border-2 border-black p-4 rounded max-w-[400px]">
               <CardBody className="d-flex flex-column">
                 <input
                   type="text"
                   placeholder="Enter title"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className=" text-black p-2 rounded w-full md:w-1/4 break-words border border-black"
+                  className=" text-black p-2 rounded w-full  break-words border border-black"
                 />
                 <br />
                 <br />
@@ -71,7 +71,7 @@ const StickyWall = () => {
                   placeholder="Enter description"
                   value={desc}
                   onChange={(e) => setDesc(e.target.value)}
-                  className="border border-black text-black p-2 rounded w-full md:w-1/2  whitespace-pre-wrap break-words overflow-hidden"
+                  className="border border-black text-black p-2 rounded w-full  whitespace-pre-wrap break-words overflow-hidden"
                 ></textarea>
               </CardBody>
               <button
@@ -81,25 +81,21 @@ const StickyWall = () => {
                 Add Note
               </button>
             </Card>
-          </Col>
-        </Row>
-
-        <Row>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ml-50">
-            {notes.map((note) => (
-              <Col key={note.id} xs="12" sm="6" lg="4" className="mb-4">
-                <StickyNote
-                  key={note.id}
-                  title={note.title}
-                  content={note.content}
-                  color={note.color}
-                  onDelete={() => handleDeleteNote(note.id)}
-                />
-              </Col>
-            ))}
           </div>
-        </Row>
-      </Container>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ml-30">
+          {notes.map((note) => (
+            <StickyNote
+              key={note.id}
+              title={note.title}
+              content={note.content}
+              color={note.color}
+              onDelete={() => handleDeleteNote(note.id)}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
